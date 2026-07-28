@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>{{ app_name }} — Save video &amp; audio from anywhere</title>
+<meta name="description" content="Paste a link, pick a quality, claim your file. Works with YouTube, Instagram, TikTok, X, Facebook, Reddit, and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">⬇</span>
+    <span class="brand-name">{{ app_name }}</span>
+  </div>
+  <button id="themeToggle" class="icon-btn" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">MANIFEST-01 · UNIVERSAL MEDIA CLAIM DESK</p>
+    <h1>Paste a link.<br><span class="accent">Claim your file.</span></h1>
+    <p class="sub">Works with YouTube, Instagram, TikTok, X / Twitter, Facebook, Reddit, Vimeo, SoundCloud and hundreds of other sites — powered by yt-dlp.</p>
+
+    <form id="intakeForm" class="intake" autocomplete="off">
+      <label for="urlInput" class="sr-only">Media URL</label>
+      <input id="urlInput" name="url" type="url" inputmode="url"
+             placeholder="https://www.youtube.com/watch?v=..." required />
+      <button type="button" id="pasteBtn" class="ghost-btn" title="Paste from clipboard">Paste</button>
+      <button type="submit" id="fetchBtn" class="primary-btn">Fetch</button>
+    </form>
+    <p class="hint">By using this tool you agree to only download content you own or are permitted to save. Respect creators' rights and each platform's terms.</p>
+  </section>
+
+  <section id="statusArea" class="status-area" hidden>
+    <div class="spinner"></div>
+    <span id="statusText">Reading the manifest…</span>
+  </section>
+
+  <section id="errorArea" class="error-banner" role="alert" hidden></section>
+
+  <section id="resultArea" class="ticket" hidden>
+    <div class="ticket-info">
+      <img id="thumb" alt="" />
+      <div class="ticket-meta">
+        <span class="eyebrow small" id="sourceTag">SOURCE</span>
+        <h2 id="mediaTitle">Title</h2>
+        <div class="meta-row">
+          <span id="uploader"></span>
+          <span id="duration"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perforation" aria-hidden="true"></div>
+
+    <div class="ticket-stubs">
+      <div class="stub-group">
+        <p class="stub-group-label">Video + audio</p>
+        <div class="stub-list" id="videoFormats"></div>
+      </div>
+      <div class="stub-group">
+        <p class="stub-group-label">Audio only</p>
+        <div class="stub-list" id="audioFormats"></div>
+      </div>
+      <div class="stub-group">
+        <p class="stub-group-label">Video only (no audio track)</p>
+        <div class="stub-list" id="videoOnlyFormats"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="progressArea" class="progress-card" hidden>
+    <div class="progress-head">
+      <span id="progressLabel">Preparing…</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+    <div class="progress-sub">
+      <span id="progressSpeed"></span>
+      <span id="progressEta"></span>
+    </div>
+    <a id="downloadLink" class="primary-btn" hidden download>Save file</a>
+  </section>
+
+  <section class="platforms">
+    <p class="eyebrow small">SUPPORTED ROUTES</p>
+    <div class="platform-chips">
+      <span>YouTube</span><span>Instagram</span><span>TikTok</span><span>X / Twitter</span>
+      <span>Facebook</span><span>Reddit</span><span>Vimeo</span><span>SoundCloud</span><span>+ 1000 more</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>{{ app_name }} does not host or store any media. Files are fetched on demand and removed from the server shortly after delivery. You are responsible for complying with copyright law and each platform's terms of service in your jurisdiction.</p>
+</footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
